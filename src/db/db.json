@@ -1,0 +1,62 @@
+{
+  "categories": [
+    { "id": 1, "title": "Cuidado Personal" },
+    { "id": 2, "title": "Cuidados Generales" },
+    { "id": 3, "title": "Maquillaje" },
+    { "id": 4, "title": "Perfume"},
+    { "id": 5, "title": "Accesorios"},
+    { "id": 6, "title": "Mundo Bebé"},
+    { "id": 7, "title": "Regaleria"}
+  ],
+  "products": [ 
+    { "id": 1, 
+    "catId": 1, 
+    "title": "PERPIEL EMULSION X400 GR" , 
+    "price":  12000.00 , 
+    "stock": 100 , 
+    "available": true,
+    "imgUrl": "https://cdn.batitienda.com/baticloud/images/product_31d448c821734def9c6d5b7916a50f4b_637302460074099473_0_m.jpg"
+    },
+
+    { "id": 2, 
+    "catId": 1,
+    "title": "PANADERM AE 10% UREA CREMA X 100",
+    "price":  12000.00 , 
+    "stock": 100 , 
+    "available": true,
+     "imgUrl": "https://cdn.batitienda.com/baticloud/images/product_31d448c821734def9c6d5b7916a50f4b_637302460074099473_0_m.jpg"
+     },
+     { "id": 3, 
+     "catId": 1,
+     "title": "PANADERM AE 10% UREA CREMA X 100",
+     "price":  12000.00 , 
+     "stock": 100 , 
+     "available": true,
+      "imgUrl": "https://cdn.batitienda.com/baticloud/images/product_31d448c821734def9c6d5b7916a50f4b_637302460074099473_0_m.jpg"
+      },
+      { "id": 4, 
+      "catId": 1,
+      "title": "PANADERM AE 10% UREA CREMA X 100",
+      "price":  12000.00 , 
+      "stock": 100 , 
+      "available": true,
+       "imgUrl": "https://cdn.batitienda.com/baticloud/images/product_31d448c821734def9c6d5b7916a50f4b_637302460074099473_0_m.jpg"
+       },
+       { "id": 5, 
+       "catId": 1,
+       "title": "PANADERM AE 10% UREA CREMA X 100",
+       "price":  12000.00 , 
+       "stock": 100 , 
+       "available": true,
+        "imgUrl": "https://cdn.batitienda.com/baticloud/images/product_31d448c821734def9c6d5b7916a50f4b_637302460074099473_0_m.jpg"
+        },
+        { "id": 6, 
+        "catId": 1,
+        "title": "PANADERM AE 10% UREA CREMA X 100",
+        "price":  12000.00 , 
+        "stock": 100 , 
+        "available": true,
+         "imgUrl": "https://cdn.batitienda.com/baticloud/images/product_31d448c821734def9c6d5b7916a50f4b_637302460074099473_0_m.jpg"
+         }            
+    ]
+}
