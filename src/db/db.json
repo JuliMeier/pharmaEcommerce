@@ -28,11 +28,11 @@
      },
      { "id": 3, 
      "catId": 1,
-     "title": "PANADERM AE 10% UREA CREMA X 100",
-     "price":  12000.00 , 
-     "stock": 100 , 
-     "available": true,
-      "imgUrl": "https://cdn.batitienda.com/baticloud/images/product_31d448c821734def9c6d5b7916a50f4b_637302460074099473_0_m.jpg"
+     "title": "Cepillo Dental Colgate Kit Portable 30g",
+     "price":  5000.00 , 
+     "stock": 0 , 
+     "available": false,
+      "imgUrl": "https://gpsfarma.com/media/catalog/product/7/7/7793100194672_1_cepillo_dental_colgate_kit_portable_30g_clcnl0cxwnge2uq8.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=610&width=942&canvas=942:610"
       },
       { "id": 4, 
       "catId": 1,

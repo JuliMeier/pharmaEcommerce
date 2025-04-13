@@ -23,6 +23,7 @@ const Products = () => {
             title={product.title}
             price={product.price}
             imgUrl={product.imgUrl}
+            stock={product.stock}
           />
           </div>
         ))}
