@@ -10,8 +10,15 @@ import Products from './components/products/Products';
 
 function App() {
   const [categories, setCategories] = useState([])
-  const [products, setProducts] = useState([])
+  const [countProductsCart, setCountProductsCart] = useState(0);
 
+  const handleCountProductsCart = () => {
+    setCountProductsCart(prevCount => {
+        const newCount = prevCount + 1;
+        return newCount;
+    });
+  }
+ 
   // useEffect(() => {
   //  const fecthData = async () => {
   //   const data = await fetcher("categories")
@@ -34,10 +41,9 @@ function App() {
 
   return (
     <>
-    <Header />
+    <Header countProducts={countProductsCart} />
     <DropDownCategories />
-    <Products />
-    {/* <ProductItemCard productsData={products} /> */}
+    <Products onCountProductsCart={handleCountProductsCart} />
     </>
   )
 }
