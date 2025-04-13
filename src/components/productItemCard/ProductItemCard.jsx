@@ -1,6 +1,6 @@
 import { Card, Button, Container } from "react-bootstrap";
 
-const ProductItemCard = ({ title, price, imgUrl }) => {
+const ProductItemCard = ({ title, price, imgUrl , onCountProductsCart}) => {
   return (
     <>
       <div className="col-md-4">
@@ -12,7 +12,7 @@ const ProductItemCard = ({ title, price, imgUrl }) => {
               {price}
             </Card.Subtitle>
             <div className="d-grid gap-2">
-              <Button variant="success" size="lg">
+              <Button variant="success" size="lg" onClick={onCountProductsCart}>
                 Agregar al carrito
               </Button>
             </div>

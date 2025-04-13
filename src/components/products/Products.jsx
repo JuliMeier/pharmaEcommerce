@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import ProductItemCard from "../productItemCard/ProductItemCard";
 
-const Products = () => {
+const Products = ({onCountProductsCart}) => {
   const [products, setProducts] = useState([]);
+
 
   useEffect(() => {
     const fetchData = async () => {
@@ -12,6 +13,8 @@ const Products = () => {
     };
     fetchData();
   }, []);
+
+ 
 
   return (
     <>
@@ -23,6 +26,8 @@ const Products = () => {
             title={product.title}
             price={product.price}
             imgUrl={product.imgUrl}
+            onCountProductsCart={onCountProductsCart}
+            
           />
           </div>
         ))}
