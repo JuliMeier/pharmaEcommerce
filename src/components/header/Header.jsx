@@ -4,9 +4,22 @@ import { FaCartPlus} from 'react-icons/fa';
 import { VscAccount } from "react-icons/vsc";
 import CountProductsItems from '../countProductsItems/CountProductsItems';
 import './Header.css'
+import { useState } from 'react';
+import CartOffCanvas from '../cartOffCanvas/CartOffCanvas';
 
 
 const Header = ({countProducts}) => {
+
+  const [showCart, setShowCart] = useState(false);
+
+  const handleCartShow = () => {
+    setShowCart(true);
+  }
+  const handleCartClose= () => {
+    setShowCart(false);
+  }
+
+
   return (
     <>
       <Navbar className="bg-body-tertiary">
@@ -23,12 +36,16 @@ const Header = ({countProducts}) => {
           </Navbar.Brand>
           <Nav className="ms-auto nav-bar">
             <Nav.Link href="#home">Home</Nav.Link>
-            <Nav.Link href="#cart"> <FaCartPlus /> Carrito</Nav.Link>
+            <Nav.Link href="#cart" onClick={handleCartShow}> <FaCartPlus /> Carrito</Nav.Link>
             <CountProductsItems countProducts={countProducts} />
             <Nav.Link href="#access"><VscAccount /> Acceder</Nav.Link>
           </Nav>
         </Container>
       </Navbar>
+      <CartOffCanvas
+        show={showCart}
+        onHide={handleCartClose}
+      />
     </>
   )
 }
