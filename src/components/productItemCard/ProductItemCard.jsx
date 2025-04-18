@@ -7,13 +7,15 @@ const ProductItemCard = ({
   imgUrl,
   stock,
   onCountProductsCart,
+  onAddProduct
 }) => {
   const [showToast, setShowToast] = useState(false);
 
   const handleButtonClick = () => {
     onCountProductsCart();
-
     setShowToast(true);
+    onAddProduct({title, price, imgUrl, stock })
+    
   };
 
   return (

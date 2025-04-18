@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import ProductItemCard from "../productItemCard/ProductItemCard";
 
-const Products = ({ onCountProductsCart }) => {
+const Products = ({ onCountProductsCart, onAddProduct }) => {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
@@ -24,6 +24,7 @@ const Products = ({ onCountProductsCart }) => {
               imgUrl={product.imgUrl}
               stock={product.stock}
               onCountProductsCart={onCountProductsCart}
+              onAddProduct={onAddProduct}
             />
           </div>
         ))}

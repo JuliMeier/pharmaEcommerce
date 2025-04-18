@@ -18,32 +18,35 @@ function App() {
         return newCount;
     });
   }
+
+  const [cartItems, setCartItems] = useState([])
  
-  // useEffect(() => {
-  //  const fecthData = async () => {
-  //   const data = await fetcher("categories")
-  //   setCategories(data)
-  //  }
-  //   fecthData()
-  // }, [])
+  
 
-    // const handleCategoryClick = (id) => {
-    //   fetch(`http://localhost:3001/products?catId=${id}`)
-    //   .then(response => response.json())
-    //   .then(data => {
+    const handleAddProduct = (product) => {
+      setCartItems((prevItems) => {
+        const existingProduct = prevItems.find(item => item.title === product.title);
+
+        if(existingProduct){
+          return prevItems.map(item =>
+            item.title === product.title ? {...item, quantity: item.quantity + 1} : item
+           )
+        } else {
+          return [...prevItems, { ...product, quantity: 1 }];
+        }
+      })
       
-    //   setProducts(data)
-    //   console.log(products)
-    // })
-    //   console.log('Category clicked', id)
-    // }
+    }
 
+    const handleRemoveProduct = (title) => {
+      setCartItems((prevItems) => prevItems.filter(item => item.title !== title) )
+    }
 
   return (
     <>
-    <Header countProducts={countProductsCart} />
+    <Header  countProducts={countProductsCart} items={cartItems} onRemoveProduct={handleRemoveProduct} />
     <DropDownCategories />
-    <Products onCountProductsCart={handleCountProductsCart} />
+    <Products onAddProduct={handleAddProduct} onCountProductsCart={handleCountProductsCart} />
     </>
   )
 }
