@@ -34,8 +34,13 @@ const CartOffCanvas = ({ show, onHide, items, onRemoveProduct, onIncrement, onDe
                   <MdDeleteForever />
                 </button>
               </li>
+
             ))
           )}
+          <div className="d-flex justify-content-between align-items-center mt-3">
+            <h5 className="text-muted">Total:</h5>
+            <h5>${items.reduce((total, item) => total + item.price * item.quantity, 0)}</h5>
+          </div>
         </Offcanvas.Body>
       </Offcanvas>
     </div>
