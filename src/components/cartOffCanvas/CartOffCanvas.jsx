@@ -1,7 +1,7 @@
 import { Offcanvas } from "react-bootstrap";
 import { MdDeleteForever } from "react-icons/md";
 
-const CartOffCanvas = ({ show, onHide, items, onRemoveProduct }) => {
+const CartOffCanvas = ({ show, onHide, items, onRemoveProduct, onIncrement, onDecrement }) => {
   return (
     <div>
       <Offcanvas show={show} onHide={onHide} placement="end">
@@ -15,7 +15,15 @@ const CartOffCanvas = ({ show, onHide, items, onRemoveProduct }) => {
             items.map((item, index) => (
               <li key={index} className="list-group-item d-flex justify-content-between align-items-center">
                 <div>
+                  <button 
+                  className="btn btn-outline-secondary btn-sm"
+                  onClick={()=> onDecrement(item.title)}
+                  >-</button>
                 <strong>{item.quantity}</strong>
+                <button 
+                className="btn btn-outline-secondary btn-sm"
+                onClick={()=> onIncrement(item.title)}
+                >+</button>
                 {item.title} -
                 <div className="d-flex justify-content-center"><strong>${item.price}</strong></div>                
                 </div>                

@@ -11,6 +11,7 @@ import Products from './components/products/Products';
 function App() {
   const [categories, setCategories] = useState([])
   const [countProductsCart, setCountProductsCart] = useState(0);
+  const [cartItems, setCartItems] = useState([])
 
   const handleCountProductsCart = () => {
     setCountProductsCart(prevCount => {
@@ -19,7 +20,14 @@ function App() {
     });
   }
 
-  const [cartItems, setCartItems] = useState([])
+  const handleDecreaseCountProductsCart = (amount = 1) =>{
+    setCountProductsCart(prevCount => {
+      const newCount = prevCount - amount;
+      return newCount;
+      });
+  }
+
+  
  
   
 
@@ -39,12 +47,51 @@ function App() {
     }
 
     const handleRemoveProduct = (title) => {
-      setCartItems((prevItems) => prevItems.filter(item => item.title !== title) )
+      const productToRemove = cartItems.find((item)=>item.title === title)
+   
+        setCartItems((prevItems) =>
+          prevItems.filter((item) => item.title !== title)
+        );
+      
+        if(productToRemove){
+          handleDecreaseCountProductsCart(productToRemove.quantity)
+        }
+
+      }
+    
+
+    const handleIncrementQuantity = (title) => {
+      setCartItems((prevItems)=> 
+        prevItems.map((item) => 
+        item.title === title
+        ? {...item, quantity: item.quantity + 1}
+        : item
+        )
+      )
+      handleCountProductsCart()
+    }
+
+    const handleDecrementQuantity = (title) => {
+      setCartItems((prevItems)=> 
+        prevItems.map((item) => 
+        item.title === title
+        ? {...item, quantity: item.quantity - 1}
+        : item
+        )
+        .filter((item) => item.quantity > 0)
+      )
+      handleDecreaseCountProductsCart()
     }
 
   return (
     <>
-    <Header  countProducts={countProductsCart} items={cartItems} onRemoveProduct={handleRemoveProduct} />
+    <Header  
+    countProducts={countProductsCart} 
+    items={cartItems} 
+    onRemoveProduct={handleRemoveProduct} 
+    onIncrement={handleIncrementQuantity}
+    onDecrement={handleDecrementQuantity}
+    />
     <DropDownCategories />
     <Products onAddProduct={handleAddProduct} onCountProductsCart={handleCountProductsCart} />
     </>

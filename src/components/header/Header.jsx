@@ -8,7 +8,7 @@ import { useState } from 'react';
 import CartOffCanvas from '../cartOffCanvas/CartOffCanvas';
 
 
-const Header = ({countProducts, items, onRemoveProduct}) => {
+const Header = ({countProducts, items, onRemoveProduct, onIncrement, onDecrement}) => {
 
   const [showCart, setShowCart] = useState(false);
 
@@ -44,6 +44,8 @@ const Header = ({countProducts, items, onRemoveProduct}) => {
       </Navbar>
       <CartOffCanvas
         onRemoveProduct={onRemoveProduct}
+        onIncrement={onIncrement}
+        onDecrement={onDecrement}
         show={showCart}
         onHide={handleCartClose}
         items={items}
