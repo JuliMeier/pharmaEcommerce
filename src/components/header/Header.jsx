@@ -38,7 +38,7 @@ const Header = ({countProducts, items, onRemoveProduct, onIncrement, onDecrement
             <Nav.Link href="#home">Home</Nav.Link>
             <Nav.Link href="#cart" onClick={handleCartShow}> <FaCartPlus /> Carrito</Nav.Link>
             <CountProductsItems countProducts={countProducts} />
-            <Nav.Link href="#access"><VscAccount /> Acceder</Nav.Link>
+            <Nav.Link href="/auth/login"><VscAccount /> Acceder</Nav.Link>
           </Nav>
         </Container>
       </Navbar>

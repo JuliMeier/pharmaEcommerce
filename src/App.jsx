@@ -1,12 +1,16 @@
 import { useEffect, useState } from 'react'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css'
 import Header from './components/header/Header';
-import { fetcher } from './fetcher';
 import DropDownCategories from './components/dropDownCategories/DropDownCategories';
 import ProductItem from './components/productItemCard/ProductItemCard';
 import ProductItemCard from './components/productItemCard/ProductItemCard';
 import Products from './components/products/Products';
+import LoginPage from './components/auth/LoginPage';
+import RegisterPage from './components/auth/RegisterPage';
+import MainLayout from './components/mainLayout/MainLayout';
+import AuthLayout from './components/authLayout/AuthLayout';
 
 function App() {
   const [categories, setCategories] = useState([])
@@ -84,16 +88,28 @@ function App() {
     }
 
   return (
-    <>
-    <Header  
-    countProducts={countProductsCart} 
-    items={cartItems} 
-    onRemoveProduct={handleRemoveProduct} 
-    onIncrement={handleIncrementQuantity}
-    onDecrement={handleDecrementQuantity}
-    />
-    <DropDownCategories />
-    <Products onAddProduct={handleAddProduct} onCountProductsCart={handleCountProductsCart} />
+    <>  
+    <BrowserRouter>
+    <Routes>
+      <Route element={<AuthLayout />} >
+        <Route path="/auth/login" element={<LoginPage />} /> 
+        <Route path="/auth/register" element={<RegisterPage />} />
+      </Route>
+      <Route path="/" element={
+            <MainLayout 
+            onAddProduct={handleAddProduct} 
+            onCountProductsCart={handleCountProductsCart}
+            countProducts={countProductsCart}
+            items={cartItems}
+            onRemoveProduct={handleRemoveProduct}
+            onIncrement={handleIncrementQuantity}
+            onDecrement={handleDecrementQuantity}
+            />
+          } 
+        />
+    </Routes>
+    
+    </BrowserRouter>
     </>
   )
 }

@@ -1,7 +1,11 @@
-import { Offcanvas } from "react-bootstrap";
+import { Offcanvas, Button } from "react-bootstrap";
 import { MdDeleteForever } from "react-icons/md";
+import { useNavigate} from 'react-router-dom'
 
 const CartOffCanvas = ({ show, onHide, items, onRemoveProduct, onIncrement, onDecrement }) => {
+
+  const navigate = useNavigate();
+
   return (
     <div>
       <Offcanvas show={show} onHide={onHide} placement="end">
@@ -41,6 +45,10 @@ const CartOffCanvas = ({ show, onHide, items, onRemoveProduct, onIncrement, onDe
             <h5 className="text-muted">Total:</h5>
             <h5>${items.reduce((total, item) => total + item.price * item.quantity, 0)}</h5>
           </div>
+          { items.length > 0 && <div className="mt-3">
+            <Button size="lg" className="w-100" variant="success" onClick={()=> navigate('/auth/login')}>Comprar</Button>
+          </div>   }
+                 
         </Offcanvas.Body>
       </Offcanvas>
     </div>

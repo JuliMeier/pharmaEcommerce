@@ -20,43 +20,43 @@
 
     { "id": 2, 
     "catId": 1,
-    "title": "PANADERM AE 10% UREA CREMA X 100",
-    "price":  12000.00 , 
+    "title": "Base de Maquillaje Rimmel Matte Foundation x 30 ml",
+    "price":  42000.00 , 
     "stock": 100 , 
     "available": true,
-     "imgUrl": "https://cdn.batitienda.com/baticloud/images/product_31d448c821734def9c6d5b7916a50f4b_637302460074099473_0_m.jpg"
+     "imgUrl": "https://farmacityar.vtexassets.com/arquivos/ids/235418-1200-auto?v=638101037834770000&width=1200&height=auto&aspect=true"
      },
      { "id": 3, 
-     "catId": 1,
-     "title": "Cepillo Dental Colgate Kit Portable 30g",
-     "price":  5000.00 , 
+     "catId": 2,
+     "title": "Desodorante Dove Men Clin Cr Sotf Solid x 58 g",
+     "price":  4500.00 , 
      "stock": 0 , 
      "available": false,
-      "imgUrl": "https://gpsfarma.com/media/catalog/product/7/7/7793100194672_1_cepillo_dental_colgate_kit_portable_30g_clcnl0cxwnge2uq8.jpg?quality=80&bg-color=255,255,255&fit=bounds&height=610&width=942&canvas=942:610"
+      "imgUrl": "https://farmacityar.vtexassets.com/arquivos/ids/264359-1200-auto?v=638757625211370000&width=1200&height=auto&aspect=true"
       },
       { "id": 4, 
       "catId": 1,
-      "title": "PANADERM AE 10% UREA CREMA X 100",
-      "price":  12000.00 , 
+      "title": "Máscara de Pestañas Maybelline Lash Sensational Sky High Cosmic",
+      "price":  22000.00 , 
       "stock": 100 , 
       "available": true,
-       "imgUrl": "https://cdn.batitienda.com/baticloud/images/product_31d448c821734def9c6d5b7916a50f4b_637302460074099473_0_m.jpg"
+       "imgUrl": "https://farmacityar.vtexassets.com/arquivos/ids/257019-1200-auto?v=638537061641170000&width=1200&height=auto&aspect=true"
        },
        { "id": 5, 
        "catId": 1,
-       "title": "PANADERM AE 10% UREA CREMA X 100",
-       "price":  12000.00 , 
+       "title": "Base de Maquillaje L'Oréal París True Match Tono Beige Creme x 30 ml",
+       "price":  29000.00 , 
        "stock": 100 , 
        "available": true,
-        "imgUrl": "https://cdn.batitienda.com/baticloud/images/product_31d448c821734def9c6d5b7916a50f4b_637302460074099473_0_m.jpg"
+        "imgUrl": "https://farmacityar.vtexassets.com/arquivos/ids/257062-1200-auto?v=638537142896530000&width=1200&height=auto&aspect=true"
         },
         { "id": 6, 
         "catId": 1,
-        "title": "PANADERM AE 10% UREA CREMA X 100",
-        "price":  12000.00 , 
+        "title": "Protector Térmico Tresemmé Spray x 120 ml",
+        "price":  5200.00 , 
         "stock": 100 , 
         "available": true,
-         "imgUrl": "https://cdn.batitienda.com/baticloud/images/product_31d448c821734def9c6d5b7916a50f4b_637302460074099473_0_m.jpg"
+         "imgUrl": "https://farmacityar.vtexassets.com/arquivos/ids/260255-1200-auto?v=638618280724670000&width=1200&height=auto&aspect=true"
          }            
     ]
 }
