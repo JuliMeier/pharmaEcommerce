@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
-import { Button, Card, Col, Form, FormGroup, Row } from "react-bootstrap";
+import { Button, Col, Form, FormGroup, Row } from "react-bootstrap";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
@@ -28,16 +28,21 @@ const LoginPage = () => {
     setPassword(event.target.value);
     setErrors((prevErrors) => ({
       ...prevErrors,
-      password: true,
+      password: false,
     }));
   };
+
+  function esEmailValido(email) {
+    const expresion = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return expresion.test(email);
+  }
 
   const handleSubmit = (event) => {
     event.preventDefault();
 
     let valid = true;
 
-    if (!email.length) {
+    if (!email.length || !esEmailValido(email.length)) {
       emailRef.current.focus();
       setErrors((prevErrors) => ({
         ...prevErrors,
@@ -75,7 +80,7 @@ const LoginPage = () => {
                 ref={emailRef}
               />
               {errors.email && (
-                <p className="text-danger">El campo email es obligatorio</p>
+                <p className="text-danger">Por favor verifique su correo</p>
               )}
             </FormGroup>
             <FormGroup className="mb-4">
