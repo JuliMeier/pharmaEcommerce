@@ -1,32 +1,121 @@
 import { Link } from "react-router-dom";
-import Button from "react-bootstrap/Button";
-import Form from "react-bootstrap/Form";
+import { useState, useRef } from "react";
+import { useNavigate } from "react-router-dom";
+import { Button, Card, Col, Form, FormGroup, Row } from "react-bootstrap";
 
 const LoginPage = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [errors, setErrors] = useState({
+    email: false,
+    password: false,
+  });
+
+  const emailRef = useRef(null);
+  const passwordRef = useRef(null);
+
+  const navigate = useNavigate();
+
+  const handleEmailChange = (event) => {
+    setEmail(event.target.value);
+    setErrors((prevErrors) => ({
+      ...prevErrors,
+      email: false,
+    }));
+  };
+
+  const handlePasswordChange = (event) => {
+    setPassword(event.target.value);
+    setErrors((prevErrors) => ({
+      ...prevErrors,
+      password: true,
+    }));
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    let valid = true;
+
+    if (!email.length) {
+      emailRef.current.focus();
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        email: true,
+      }));
+      return;
+    }
+
+    if (!password.length) {
+      passwordRef.current.focus();
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        password: true,
+      }));
+      return;
+    }
+
+    navigate("");
+  };
+
   return (
     <>
-    <div className='d-flex justify-content-center align-items-center vh-100 '>
-    <div>
-      <form className="container text-center" >
+      <div className="d-flex justify-content-center align-items-center vh-100 ">
         <div>
-          <label htmlFor='email' className='h5 text-secondary d-block'>Email</label>
-          <input id="email" className='mb-4 w-100' type="text" placeholder='Email de Registro' />
-        </div>
-        <div>
-          <label htmlFor='password' className='h5 text-secondary d-block'>Password</label>
-          <input id="password" className='mb-4 w-100' type="password" placeholder='Password de Registro' />
-        </div>
+          <Form onSubmit={handleSubmit}>
+            <FormGroup className="mb-4">
+              <Form.Control
+                type="text"
+                className={`${
+                  errors.email ? "border border-danger" : ""
+                }`}
+                placeholder="Ingresar email"
+                onChange={handleEmailChange}
+                value={email}
+                ref={emailRef}
+              />
+              {errors.email && (
+                <p className="text-danger">El campo email es obligatorio</p>
+              )}
+            </FormGroup>
+            <FormGroup className="mb-4">
+              <Form.Control
+                type="password"
+                placeholder="Ingresar contraseña"
+                className={`${
+                  errors.password ? "border border-danger" : ""
+                }`}
+                onChange={handlePasswordChange}
+                value={password}
+                ref={passwordRef}
+              />
+            </FormGroup>
+            <Row>
+              <Col />
+              <Col md={6} className="d-flex justify-content-end">
+                <Button variant="secondary" type="submit">
+                  Iniciar sesión
+                </Button>
+              </Col>
+            </Row>
+          </Form>
 
-        <div>
-          <input type="submit" className='btn btn-success mb-4' value="Crear Cuenta" />
+          <nav>
+            <Link
+              to="/auth/register"
+              className="text-reset d-block text-center text-decoration-none"
+            >
+              ¿No tienes una cuenta? Registrate
+            </Link>
+            <Link
+              to="/"
+              className="text-reset d-block text-center text-decoration-none"
+            >
+              Volver a la tienda
+            </Link>
+          </nav>
         </div>
-      </form>
-    <nav>
-    <Link to='/auth/register' className='text-reset d-block text-center text-decoration-none'>¿No tienes una cuenta? Registrate</Link>
-    <Link  to="/" className='text-reset d-block text-center text-decoration-none'>Volver a la tienda</Link>
-    </nav>
-    </div>
-    </div>
+      </div>
     </>
   );
 };
