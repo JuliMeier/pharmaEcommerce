@@ -7,7 +7,8 @@ const ProductItemCard = ({
   imgUrl,
   stock,
   onCountProductsCart,
-  onAddProduct
+  onAddProduct,
+  onImageClick
 }) => {
   const [showToast, setShowToast] = useState(false);
 
@@ -22,7 +23,7 @@ const ProductItemCard = ({
     <>
       <div className="col-md-4">
         <Card style={{ width: "22rem" }} className="mx-3">
-          <Card.Img height={400} variant="top" src={imgUrl} />
+          <Card.Img height={400} variant="top" src={imgUrl} onClick={onImageClick} style={{cursor: "pointer"}} />
           <Card.Body>
             <Card.Title className="text-center">{title}</Card.Title>
             <Card.Subtitle className="mb-2 text-muted text-center">
