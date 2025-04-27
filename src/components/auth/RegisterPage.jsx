@@ -86,7 +86,7 @@ const RegisterPage = () => {
 
     let valid = true;
 
-    if (!email.length || !esEmailValido(email.length)) {
+    if (!email.length || !esEmailValido(email)) {
       emailRef.current.focus();
       setErrors((prevErrors) => ({
         ...prevErrors,
