@@ -3,7 +3,6 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css'
 import Header from './components/header/Header';
-import DropDownCategories from './components/dropDownCategories/DropDownCategories';
 import ProductItem from './components/productItemCard/ProductItemCard';
 import ProductItemCard from './components/productItemCard/ProductItemCard';
 import Products from './components/products/Products';

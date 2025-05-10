@@ -11,20 +11,22 @@
   "products": [ 
     { "id": 1, 
     "catId": 1, 
-    "title": "PERPIEL EMULSION X400 GR" , 
+    "title": "Emulsión Corporal Hidratante PERPIEL EMULSION X400 GR" , 
     "price":  12000.00 , 
     "stock": 100 , 
     "available": true,
-    "imgUrl": "https://cdn.batitienda.com/baticloud/images/product_31d448c821734def9c6d5b7916a50f4b_637302460074099473_0_m.jpg"
+    "imgUrl": "https://cdn.batitienda.com/baticloud/images/product_31d448c821734def9c6d5b7916a50f4b_637302460074099473_0_m.jpg",
+    "favorite": true
     },
 
     { "id": 2, 
-    "catId": 1,
+    "catId": 2,
     "title": "Base de Maquillaje Rimmel Matte Foundation x 30 ml",
     "price":  42000.00 , 
     "stock": 100 , 
     "available": true,
-     "imgUrl": "https://farmacityar.vtexassets.com/arquivos/ids/235418-1200-auto?v=638101037834770000&width=1200&height=auto&aspect=true"
+     "imgUrl": "https://farmacityar.vtexassets.com/arquivos/ids/235418-1200-auto?v=638101037834770000&width=1200&height=auto&aspect=true",
+     "favorite": false
      },
      { "id": 3, 
      "catId": 2,
@@ -32,31 +34,35 @@
      "price":  4500.00 , 
      "stock": 0 , 
      "available": false,
-      "imgUrl": "https://farmacityar.vtexassets.com/arquivos/ids/264359-1200-auto?v=638757625211370000&width=1200&height=auto&aspect=true"
+      "imgUrl": "https://farmacityar.vtexassets.com/arquivos/ids/264359-1200-auto?v=638757625211370000&width=1200&height=auto&aspect=true",
+      "favorite": false
       },
       { "id": 4, 
-      "catId": 1,
+      "catId": 3,
       "title": "Máscara de Pestañas Maybelline Lash Sensational Sky High Cosmic",
       "price":  22000.00 , 
       "stock": 100 , 
       "available": true,
-       "imgUrl": "https://farmacityar.vtexassets.com/arquivos/ids/257019-1200-auto?v=638537061641170000&width=1200&height=auto&aspect=true"
+       "imgUrl": "https://farmacityar.vtexassets.com/arquivos/ids/257019-1200-auto?v=638537061641170000&width=1200&height=auto&aspect=true",
+       "favorite": false
        },
        { "id": 5, 
-       "catId": 1,
+       "catId": 4,
        "title": "Base de Maquillaje L'Oréal París True Match Tono Beige Creme x 30 ml",
        "price":  29000.00 , 
        "stock": 100 , 
        "available": true,
-        "imgUrl": "https://farmacityar.vtexassets.com/arquivos/ids/257062-1200-auto?v=638537142896530000&width=1200&height=auto&aspect=true"
+        "imgUrl": "https://farmacityar.vtexassets.com/arquivos/ids/257062-1200-auto?v=638537142896530000&width=1200&height=auto&aspect=true",
+        "favorite": false
         },
         { "id": 6, 
-        "catId": 1,
+        "catId": 5,
         "title": "Protector Térmico Tresemmé Spray x 120 ml",
         "price":  5200.00 , 
         "stock": 100 , 
         "available": true,
-         "imgUrl": "https://farmacityar.vtexassets.com/arquivos/ids/260255-1200-auto?v=638618280724670000&width=1200&height=auto&aspect=true"
+         "imgUrl": "https://farmacityar.vtexassets.com/arquivos/ids/260255-1200-auto?v=638618280724670000&width=1200&height=auto&aspect=true",
+         "favorite": false
          }            
     ]
 }

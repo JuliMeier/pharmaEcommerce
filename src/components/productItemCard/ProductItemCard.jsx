@@ -1,14 +1,17 @@
 import React, { useState } from "react";
 import { Card, Button, Toast, ToastContainer } from "react-bootstrap";
+import { FaHeart, FaRegHeart} from "react-icons/fa"
 
 const ProductItemCard = ({
   title,
   price,
   imgUrl,
   stock,
+  favorite,
   onCountProductsCart,
   onAddProduct,
-  onImageClick
+  onImageClick,
+  onHandleFavorite
 }) => {
   const [showToast, setShowToast] = useState(false);
 
@@ -23,11 +26,14 @@ const ProductItemCard = ({
     <>
       <div className="col-md-4">
         <Card style={{ width: "22rem" }} className="mx-3">
+          <div className="d-flex justify-content-end mt-2 me-2" onClick={onHandleFavorite} style={{cursor: "pointer"}} >
+          {favorite ? <FaHeart /> : <FaRegHeart />} 
+          </div>
           <Card.Img height={400} variant="top" src={imgUrl} onClick={onImageClick} style={{cursor: "pointer"}} />
           <Card.Body>
             <Card.Title className="text-center">{title}</Card.Title>
             <Card.Subtitle className="mb-2 text-muted text-center">
-              {price}
+              ${price}
             </Card.Subtitle>
 
             <div className="d-grid gap-2">

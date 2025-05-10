@@ -199,7 +199,7 @@ const RegisterPage = () => {
                 ref={emailRef}
               />
               {errors.email && (
-                <p className="text-danger">Por favor verifique su correo</p>
+                <p className="text-danger">Ingrese una dirección de correo válida</p>
               )}
             </FormGroup>
 
@@ -228,9 +228,8 @@ const RegisterPage = () => {
             </FormGroup>
 
             <Row>
-              <Col />
-              <Col md={6} className="d-flex justify-content-end">
-                <Button variant="secondary" type="submit">
+              <Col className="d-grid">
+                <Button variant="success" type="submit">
                   Crear cuenta
                 </Button>
               </Col>
@@ -240,13 +239,13 @@ const RegisterPage = () => {
           <nav>
             <Link
               to="/auth/login"
-              className="text-reset d-block text-center text-decoration-none"
+              className="text-reset d-block text-center text-decoration-none mt-2"
             >
               ¿Ya tienes una cuenta? Inicia Sesión
             </Link>
             <Link
               to="/"
-              className="text-reset d-block text-center text-decoration-none"
+              className="text-reset d-block text-center text-decoration-none mt-2"
             >
               Volver a la tienda
             </Link>

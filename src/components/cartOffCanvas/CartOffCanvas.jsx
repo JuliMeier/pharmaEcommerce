@@ -20,12 +20,12 @@ const CartOffCanvas = ({ show, onHide, items, onRemoveProduct, onIncrement, onDe
               <li key={index} className="list-group-item d-flex justify-content-between align-items-center">
                 <div>
                   <button 
-                  className="btn btn-outline-secondary btn-sm"
+                  className="btn btn-outline-secondary btn-sm me-2"
                   onClick={()=> onDecrement(item.title)}
                   >-</button>
                 <strong>{item.quantity}</strong>
                 <button 
-                className="btn btn-outline-secondary btn-sm"
+                className="btn btn-outline-secondary btn-sm ms-2 me-2"
                 onClick={()=> onIncrement(item.title)}
                 >+</button>
                 {item.title} -

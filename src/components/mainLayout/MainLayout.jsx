@@ -1,8 +1,21 @@
+import { useState } from "react";
 import Header from "../header/Header"
-import DropDownCategories from "../dropDownCategories/DropDownCategories"
 import Products from "../products/Products"
+import SearchProducts from "../searchProducts/SearchProducts"
 
 const MainLayout = ({ onAddProduct, onCountProductsCart, countProducts, items, onRemoveProduct, onIncrement, onDecrement }) => {
+
+    const [searchProduct, setSearchProduct] = useState('');
+    const [selectedCategory, setSelectedCategory] = useState(null);
+
+    const handleProductSearch = (value) => {
+      setSearchProduct(value);
+    }
+
+    const handleCategorySelect = (categoryId) => {
+      setSelectedCategory(categoryId);
+    }
+
   return (
     <>
         <Header 
@@ -12,8 +25,8 @@ const MainLayout = ({ onAddProduct, onCountProductsCart, countProducts, items, o
         onIncrement={onIncrement}
         onDecrement={onDecrement}
         />
-        <DropDownCategories />
-        <Products onAddProduct={onAddProduct} onCountProductsCart={onCountProductsCart} />
+        <SearchProducts onCategorySelect={handleCategorySelect} onSearch={handleProductSearch} />
+        <Products searchProduct={searchProduct} selectedCategory={selectedCategory} onAddProduct={onAddProduct} onCountProductsCart={onCountProductsCart} />
 
     </>
   )

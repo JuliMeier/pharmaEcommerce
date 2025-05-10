@@ -80,7 +80,7 @@ const LoginPage = () => {
                 ref={emailRef}
               />
               {errors.email && (
-                <p className="text-danger">Por favor verifique su correo</p>
+                <p className="text-danger">Ingrese una dirección de correo válida</p>
               )}
             </FormGroup>
             <FormGroup className="mb-4">
@@ -96,9 +96,8 @@ const LoginPage = () => {
               />
             </FormGroup>
             <Row>
-              <Col />
-              <Col md={6} className="d-flex justify-content-end">
-                <Button variant="secondary" type="submit">
+              <Col className="d-grid">
+                <Button  variant="success" type="submit">
                   Iniciar sesión
                 </Button>
               </Col>
@@ -108,13 +107,13 @@ const LoginPage = () => {
           <nav>
             <Link
               to="/auth/register"
-              className="text-reset d-block text-center text-decoration-none"
+              className="text-reset d-block text-center text-decoration-none mt-2"
             >
               ¿No tienes una cuenta? Registrate
             </Link>
             <Link
               to="/"
-              className="text-reset d-block text-center text-decoration-none"
+              className="text-reset d-block text-center text-decoration-none mt-2"
             >
               Volver a la tienda
             </Link>
