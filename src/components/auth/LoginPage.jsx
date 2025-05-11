@@ -60,7 +60,7 @@ const LoginPage = () => {
       return;
     }
 
-    navigate("");
+    navigate("/checkout");
   };
 
   return (

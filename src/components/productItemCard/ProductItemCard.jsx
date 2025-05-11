@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import  { useCart } from '../../context/CartContext'
 import { Card, Button, Toast, ToastContainer } from "react-bootstrap";
 import { FaHeart, FaRegHeart} from "react-icons/fa"
 
@@ -8,18 +9,16 @@ const ProductItemCard = ({
   imgUrl,
   stock,
   favorite,
-  onCountProductsCart,
-  onAddProduct,
   onImageClick,
   onHandleFavorite
 }) => {
   const [showToast, setShowToast] = useState(false);
+  const { addToCart } = useCart();
 
   const handleButtonClick = () => {
-    onCountProductsCart();
+    const product = { title, price, imgUrl, stock }
     setShowToast(true);
-    onAddProduct({title, price, imgUrl, stock })
-    
+    addToCart(product)
   };
 
   return (

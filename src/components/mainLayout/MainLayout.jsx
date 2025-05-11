@@ -2,8 +2,18 @@ import { useState } from "react";
 import Header from "../header/Header"
 import Products from "../products/Products"
 import SearchProducts from "../searchProducts/SearchProducts"
+import { useCart } from "../../context/CartContext";
 
-const MainLayout = ({ onAddProduct, onCountProductsCart, countProducts, items, onRemoveProduct, onIncrement, onDecrement }) => {
+const MainLayout = () => {
+
+    const {
+      cartItems,
+      countProductsCart,
+      addtoCart,
+      removeFromCart, 
+      incrementQuantity,
+      decrementQuantity
+    } = useCart();
 
     const [searchProduct, setSearchProduct] = useState('');
     const [selectedCategory, setSelectedCategory] = useState(null);
@@ -19,14 +29,14 @@ const MainLayout = ({ onAddProduct, onCountProductsCart, countProducts, items, o
   return (
     <>
         <Header 
-        countProducts={countProducts} 
-        items={items} 
-        onRemoveProduct={onRemoveProduct} 
-        onIncrement={onIncrement}
-        onDecrement={onDecrement}
+        countProducts={countProductsCart} 
+        items={cartItems} 
+        onRemoveProduct={removeFromCart} 
+        onIncrement={incrementQuantity}
+        onDecrement={decrementQuantity}
         />
         <SearchProducts onCategorySelect={handleCategorySelect} onSearch={handleProductSearch} />
-        <Products searchProduct={searchProduct} selectedCategory={selectedCategory} onAddProduct={onAddProduct} onCountProductsCart={onCountProductsCart} />
+        <Products searchProduct={searchProduct} selectedCategory={selectedCategory} onAddProduct={addtoCart}  />
 
     </>
   )

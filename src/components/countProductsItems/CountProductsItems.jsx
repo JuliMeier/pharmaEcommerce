@@ -1,9 +1,11 @@
+import { useCart } from '../../context/CartContext'
 import './CountProductsItems.css'
 
-const CountProductsItems = ({countProducts}) => {
+const CountProductsItems = () => {
+  const {countProductsCart} = useCart();
   return (
     <div className="count-products">
-        <span className='counter-products-num'>{countProducts} </span>
+        <span className='counter-products-num'>{countProductsCart} </span>
     </div>
   )
 }

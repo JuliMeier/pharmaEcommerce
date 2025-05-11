@@ -1,7 +1,7 @@
 import { Container, Nav, Navbar } from 'react-bootstrap';
 import { Outlet } from 'react-router-dom'
 
-const AuthLayout = () => {
+const ShopLayout = () => {
   return (
     <>
     <Navbar className="bg-body-tertiary">
@@ -26,4 +26,4 @@ const AuthLayout = () => {
   )
 }
 
-export default AuthLayout
+export default ShopLayout

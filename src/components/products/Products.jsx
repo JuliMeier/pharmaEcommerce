@@ -1,16 +1,17 @@
 import { useEffect, useState } from "react";
 import ProductItemCard from "../productItemCard/ProductItemCard";
 import { Modal, Button, Badge } from "react-bootstrap";
+import { useCart } from "../../context/CartContext";
 
 const Products = ({
-  onCountProductsCart,
-  onAddProduct,
   searchProduct,
   selectedCategory,
 }) => {
   const [products, setProducts] = useState([]);
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [showModal, setShowModal] = useState(false);
+
+  const { addToCart } = useCart();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -36,8 +37,8 @@ const Products = ({
   };
 
   const handleAddToCartFromModal = () => {
-    onAddProduct(selectedProduct);
-    onCountProductsCart();
+    addToCart(selectedProduct);
+    //onCountProductsCart();
     setShowModal(false);
   };
 
@@ -62,8 +63,8 @@ const Products = ({
               imgUrl={product.imgUrl}
               stock={product.stock}
               favorite={product.favorite}
-              onCountProductsCart={onCountProductsCart}
-              onAddProduct={onAddProduct}
+              //onCountProductsCart={onCountProductsCart}
+              onAddProduct={()=> addToCart(product)}
               onImageClick={() => handleImageClick(product)}
               onHandleFavorite={() => toogleFavorite(product.id)}
             />

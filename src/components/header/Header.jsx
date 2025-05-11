@@ -6,9 +6,18 @@ import CountProductsItems from '../countProductsItems/CountProductsItems';
 import './Header.css'
 import { useState } from 'react';
 import CartOffCanvas from '../cartOffCanvas/CartOffCanvas';
+import { useCart } from '../../context/CartContext';
 
 
-const Header = ({countProducts, items, onRemoveProduct, onIncrement, onDecrement}) => {
+const Header = () => {
+
+  const {
+    countProductsCart,
+    cartItems,
+    removeFromCart,
+    incrementQuantity,
+    decrementQuantity
+  } = useCart;
 
   const [showCart, setShowCart] = useState(false);
 
@@ -37,18 +46,18 @@ const Header = ({countProducts, items, onRemoveProduct, onIncrement, onDecrement
           <Nav className="ms-auto nav-bar">
             <Nav.Link href="#home">Home</Nav.Link>
             <Nav.Link href="#cart" onClick={handleCartShow}> <FaCartPlus /> Carrito</Nav.Link>
-            <CountProductsItems countProducts={countProducts} />
+            <CountProductsItems countProducts={countProductsCart} />
             <Nav.Link href="/auth/login"><VscAccount /> Acceder</Nav.Link>
           </Nav>
         </Container>
       </Navbar>
       <CartOffCanvas
-        onRemoveProduct={onRemoveProduct}
-        onIncrement={onIncrement}
-        onDecrement={onDecrement}
+        onRemoveProduct={removeFromCart}
+        onIncrement={incrementQuantity}
+        onDecrement={decrementQuantity}
         show={showCart}
         onHide={handleCartClose}
-        items={items}
+        items={cartItems}
       />
     </>
   )
