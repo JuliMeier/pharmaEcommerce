@@ -3,7 +3,7 @@ import { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button, Col, Form, FormGroup, Row } from "react-bootstrap";
 
-const LoginPage = () => {
+const LoginPage = ({ onLogin }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState({
@@ -59,6 +59,8 @@ const LoginPage = () => {
       }));
       return;
     }
+
+    onLogin();
 
     navigate("/checkout");
   };

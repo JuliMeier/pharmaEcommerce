@@ -1,12 +1,12 @@
 import { Container, Nav, Navbar } from 'react-bootstrap';
-import { Outlet } from 'react-router-dom'
+import { Link, Outlet } from 'react-router-dom'
 
 const ShopLayout = () => {
   return (
     <>
     <Navbar className="bg-body-tertiary">
         <Container>
-          <Navbar.Brand href="#home">
+          <Navbar.Brand><Link to="/" className="text-decoration-none"> 
             <img
               alt=""
               src="/logo-pharma.png"
@@ -14,10 +14,10 @@ const ShopLayout = () => {
               height="30"
               className="d-inline-block align-top"
             />
-            {" "} <span className='fw-bold text-success'>PharmaShopping</span>
+            {" "} <span className='fw-bold text-success'>PharmaShopping</span></Link>
           </Navbar.Brand>
           <Nav className="ms-auto nav-bar">
-            <Nav.Link href="/">Tienda</Nav.Link>
+            <Nav.Link ><Link to="/" className="text-decoration-none text-success">Tienda</Link></Nav.Link>
           </Nav>
         </Container>
       </Navbar>

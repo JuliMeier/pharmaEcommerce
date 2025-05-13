@@ -22,31 +22,6 @@ export const CartProvider = ({children}) => {
         }
     });
 
-    // useEffect(()=> {
-    //     try {
-    //         const storedItems = localStorage.getItem("cartItems");
-    //         const storedCount = localStorage.getItem("countProductsCart");
-
-    //         console.log("Leyendo desde localStorage:", { storedItems, storedCount });
-        
-    //         if (storedItems) {
-    //           const parsedItems = JSON.parse(storedItems);
-    //           if (Array.isArray(parsedItems)) {
-    //             setCartItems(parsedItems);
-    //           } else {
-    //             console.warn("cartItems en localStorage no es un array válido.");
-    //           }
-    //         }
-        
-    //         if (storedCount) {
-    //           setCountProductsCart(Number(storedCount));
-    //         }
-    //       } catch (error) {
-    //         console.error("Error al leer localStorage:", error);
-    //         localStorage.removeItem("cartItems");
-    //         localStorage.removeItem("countProductsCart");
-    //       }
-    // }, []);
 
     useEffect(()=> {
         localStorage.setItem('cartItems', JSON.stringify(cartItems));

@@ -4,7 +4,7 @@ import Products from "../products/Products"
 import SearchProducts from "../searchProducts/SearchProducts"
 import { useCart } from "../../context/CartContext";
 
-const MainLayout = () => {
+const MainLayout = ({ isLoggedIn, setIsLoggedIn }) => {
 
     const {
       cartItems,
@@ -34,6 +34,8 @@ const MainLayout = () => {
         onRemoveProduct={removeFromCart} 
         onIncrement={incrementQuantity}
         onDecrement={decrementQuantity}
+        isLoggedIn={isLoggedIn}
+        setIsLoggedIn={setIsLoggedIn}
         />
         <SearchProducts onCategorySelect={handleCategorySelect} onSearch={handleProductSearch} />
         <Products searchProduct={searchProduct} selectedCategory={selectedCategory} onAddProduct={addtoCart}  />
