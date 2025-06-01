@@ -7,8 +7,10 @@ export const Order = db.define('Order', {
         primaryKey: true,
         autoIncrement: true
     },
-    total: DataTypes.FLOAT,
-    allowNull: false,
+    total: {
+        type: DataTypes.FLOAT,
+        allowNull: false
+    },
     date: {
         type: DataTypes.DATE,
         defaultValue: DataTypes.NOW

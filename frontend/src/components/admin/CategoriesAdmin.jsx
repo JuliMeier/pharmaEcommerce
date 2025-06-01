@@ -36,8 +36,9 @@ export const CategoriesAdmin = () => {
                     body: JSON.stringify(category),
                 });
                 data = await response.json();
+                
                 if (response.ok) {
-                    setCategories(prev => prev.map(item => item.id === data.id ? data : item));
+                    setCategories(prev => prev.map(item => item.id === data.category.id ? data.category : item));
                     setMessage(data.message || "Categoría actualizada correctamente");
                     setShowToast(true);
                 } else {
@@ -54,7 +55,7 @@ export const CategoriesAdmin = () => {
                 });
                 data = await response.json();
                 if (response.ok) {
-                    setCategories(prev => [...prev, data]);
+                    setCategories(prev => [...prev, data.category]);
                     setMessage(data.message || "Categoría creada correctamente");
                     setShowToast(true);
                 } else {

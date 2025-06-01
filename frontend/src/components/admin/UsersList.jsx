@@ -1,28 +1,33 @@
-export const CategoriesList = ({ categories, onDelete, onEdit}) => {
-  
-  return categories.length > 0 ? (
+export const UsersList = ({ users, onEdit, onDelete }) => {
+  return (
     <div className="table-responsive">
       <table className="table table-hover">
         <thead className="text-center">
-          <tr className="text-center">
-            <th>Titulo Categoria</th>
+          <tr>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Email</th>
+            <th>Rol</th>
             <th>Acciones</th>
           </tr>
         </thead>
         <tbody>
-          {categories.map((category) => (
-            <tr key={category.id}>
-              <td className="text-center">{category.title}</td>
+          {users.map((user) => (
+            <tr className="text-center" key={user.id}>
+              <td>{user.name}</td>
+              <td>{user.lastName}</td>
+              <td>{user.email}</td>
+              <td>{user.roleId}</td>
               <td className="text-center">
                 <button
                   className="btn btn-primary me-2"
-                  onClick={() => onEdit(category)}
+                  onClick={() => onEdit(user)}
                 >
                   Editar
                 </button>
                 <button
                   className="btn btn-danger"
-                  onClick={() => onDelete(category.id)}
+                  onClick={() => onDelete(user.id)}
                 >
                   Eliminar
                 </button>
@@ -31,10 +36,6 @@ export const CategoriesList = ({ categories, onDelete, onEdit}) => {
           ))}
         </tbody>
       </table>
-    </div>
-  ) : (
-    <div className="alert alert-info text-center">
-      No hay categorías disponibles.
     </div>
   );
 };

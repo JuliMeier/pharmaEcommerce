@@ -1,3 +1,4 @@
+import { useState } from 'react';
 
 export const OrdersList = ({orders, onDelete, onStatusChange}) => {
 
@@ -8,7 +9,17 @@ export const OrdersList = ({orders, onDelete, onStatusChange}) => {
         { id: 4, status: 'Cancelado' }
     ];
 
-    return (
+    const [statusOrder, setStatusOrder] = useState({});
+
+    const handleSelectChange = (orderId, value) => {
+        setStatusOrder(prev => ({
+            ...prev,
+            [orderId]: value
+        }));
+    }
+
+    return orders.length > 0 ? (
+
         <div className="table-responsive">
             <table className="table table-striped table-hover">
                 <thead>
@@ -26,8 +37,8 @@ export const OrdersList = ({orders, onDelete, onStatusChange}) => {
                             <td>{order.id}</td>
                             <td>{order.total.toFixed(2)}</td>
                             <td>
-                                <select value={order.statusId}
-                                onChange={e => onStatusChange(order.id, Number(e.target.value))}
+                                <select value={statusOrder[order.id] || order.statusId}
+                                onChange={e => handleSelectChange(order.id, Number(e.target.value))}
                                 className="form-select form-select-sm">
                                     {statusOptions.map(opt => (
                                         <option key={opt.id} value={opt.id}>
@@ -37,7 +48,15 @@ export const OrdersList = ({orders, onDelete, onStatusChange}) => {
                                 </select>
                             </td>
                             <td>{new Date(order.createdAt).toLocaleDateString()}</td>
-                            <td>
+                            <td className="d-flex gap-2">
+                                <button className="btn btn-primary btn-sm"
+                                onClick={() =>
+                                        onStatusChange(order.id, statusOrder[order.id] ?? order.statusId)
+                                    }
+                                    disabled={
+                                        (statusOrder[order.id] ?? order.statusId) === order.statusId
+                                    }
+                                >Confirmar</button>
                                 <button className="btn btn-danger btn-sm"
                                 onClick={() => onDelete(order.id)}>
                                     Eliminar
@@ -49,5 +68,9 @@ export const OrdersList = ({orders, onDelete, onStatusChange}) => {
                 </tbody>
             </table>
             </div>
-    )
+    ) : (
+        <div className="alert alert-info text-center">
+            No hay órdenes disponibles.
+        </div>
+    );
 }
