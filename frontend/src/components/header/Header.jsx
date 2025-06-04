@@ -65,8 +65,9 @@ const Header = () => {
             {user && (user.role === 'admin' || user.role === 'superadmin') && (
               <Nav.Link as={Link} to="/admin">Admin</Nav.Link>
             )}
-            { (!user || user.role === 'client')  && (
+            {user && user.role === 'client' && (
               <>
+                <Nav.Link as={Link} to="/history"> Mis pedidos</Nav.Link>
                 <Nav.Link onClick={handleCartShow}> <FaCartPlus /> Carrito</Nav.Link>
                 <CountProductsItems countProducts={countProductsCart} />
               </>

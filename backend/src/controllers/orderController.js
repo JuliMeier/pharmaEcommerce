@@ -79,3 +79,23 @@ export const updateOrderStatus = async (req, res) => {
     res.status(500).json({ error: "Error al actualizar el estado del pedido" });
   }
 }
+
+
+export const getOrdersByUserId = async (req, res) => {
+  try {
+    const { userId } = req.params;
+
+    const orders = await Order.findAll({
+      where: { userId },
+      include: [OrderStatus],
+      order: [['createdAt', 'DESC']]
+    });
+
+    res.json(orders);
+  } catch (error) {
+    return res.status(500).json({ error: "Error al obtener el historial del usuario" });
+  }
+};
+
+
+
