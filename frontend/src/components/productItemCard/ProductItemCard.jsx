@@ -8,6 +8,7 @@ const ProductItemCard = ({
   price,
   imgUrl,
   stock,
+  description,
   favorite,
   onImageClick,
   onHandleFavorite
@@ -15,10 +16,13 @@ const ProductItemCard = ({
   const [showToast, setShowToast] = useState(false);
   const { addToCart } = useCart();
 
+  
+
   const handleButtonClick = () => {
-    const product = { title, price, imgUrl, stock }
+    const product = { title, price, imgUrl, stock}
     setShowToast(true);
     addToCart(product)
+    
   };
 
   return (
@@ -34,6 +38,8 @@ const ProductItemCard = ({
             <Card.Subtitle className="mb-2 text-muted text-center">
               ${price}
             </Card.Subtitle>
+
+
 
             <div className="d-grid gap-2">
               <Button

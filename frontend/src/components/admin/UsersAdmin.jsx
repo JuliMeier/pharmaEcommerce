@@ -8,8 +8,14 @@ export const UsersAdmin = () => {
     const [message, setMessage] = useState(null);
     const [error, setError] = useState(null);
 
+    const token = localStorage.getItem('token')
+
     useEffect(() => {
-        fetch('http://localhost:4000/api/users')
+        fetch('http://localhost:4000/api/users', {
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        })
             .then(res => res.json())
             .then(data => setUsers(data))
             .catch(error => console.error("Error fetching users:", error));
@@ -26,6 +32,7 @@ export const UsersAdmin = () => {
                     method: "PUT",
                     headers: {
                         "Content-Type": "application/json",
+                        'Authorization': `Bearer ${token}`
                     },
                     body: JSON.stringify(user),
                 });
@@ -41,6 +48,7 @@ export const UsersAdmin = () => {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",
+                        'Authorization': `Bearer ${token}`
                     },
                     body: JSON.stringify(user),
                 });
@@ -64,6 +72,10 @@ export const UsersAdmin = () => {
         try {
             const response = await fetch(`http://localhost:4000/api/users/${id}`, {
                 method: "DELETE",
+                 headers: {
+                    "Content-Type": "application/json",
+                    'Authorization': `Bearer ${token}`
+                 },
             });
             const data = await response.json();
             if (response.ok) {

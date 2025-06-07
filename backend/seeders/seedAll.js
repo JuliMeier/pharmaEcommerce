@@ -1,3 +1,5 @@
+import dotenv from 'dotenv';
+dotenv.config();
 import { seedCategoriesAndProducts } from './seedData.js'
 import { seedOrderStatus } from './seedOrderStatus.js'
 import { seedRoles } from './seedRoles.js'

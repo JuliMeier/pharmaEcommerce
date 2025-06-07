@@ -43,12 +43,20 @@ export const createOrder = async (req, res) => {
     const { userId, statusId, total, items } = req.body;
     const order = await Order.create({ userId, statusId, total });
     for (const item of items) {
+      const product = await Product.findByPk(item.productId)
+
+      if(!product || product.stock < item.quantity){
+        return res.status(400).json({error: `Stock insuficiente para el product: ${product ? product.title : item.productId}`})
+      }
+
       await OrderDetail.create({
         orderId: order.id,
         productId: item.productId,
         quantity: item.quantity,
         unitPrice: item.unitPrice,
       });
+      product.stock -= item.quantity;
+      await product.save();
     }
 
     res.status(201).json({ message: "Pedido creado", orderId: order.id });

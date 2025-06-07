@@ -19,9 +19,14 @@ export const ProductsAdmin = () => {
     fetchData();
   }, []);
 
+  const token = localStorage.getItem("token");
+
   const handleAddOrEdit = async (product) => {
     setMessage(null);
     setError(null);
+
+    
+    
 
     try {
       let response, data;
@@ -32,6 +37,7 @@ export const ProductsAdmin = () => {
             method: "PUT",
             headers: {
               "Content-Type": "application/json",
+              "Authorization": `Bearer ${token}`,
             },
             body: JSON.stringify(product),
           }
@@ -43,6 +49,7 @@ export const ProductsAdmin = () => {
           );
           setMessage(data.message || "Producto actualizado correctamente");
           setShowToast(true);
+          setEditingProduct(null);
         } else {
           setError(data.error || "Error al actualizar el producto");
           setShowToast(true);
@@ -52,6 +59,7 @@ export const ProductsAdmin = () => {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`,
           },
           body: JSON.stringify(product),
         });
@@ -76,6 +84,10 @@ export const ProductsAdmin = () => {
   
     fetch(`http://localhost:4000/api/products/${id}`, {
       method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`,
+      },
     })
       .then((response) => {
         if (response.ok) {

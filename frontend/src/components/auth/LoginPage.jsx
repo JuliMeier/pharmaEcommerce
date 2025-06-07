@@ -89,7 +89,7 @@ const LoginPage = () => {
       }
 
       const data = await response.json();
-      //console.log('Usuario autenticado', data);
+      
 
       localStorage.setItem('token', data.token);
       login(data.user);

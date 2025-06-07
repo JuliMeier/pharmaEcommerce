@@ -75,14 +75,6 @@ function App() {
               </Protected>
             } />
 
-            <Route
-            path="/admin/users"
-            element={
-              <Protected allowedRoles={['superadmin']}>
-                <div>Vista de administracion usuarios</div>
-              </Protected>
-            } />
-
             <Route path="*" element={<NotFound />} />
           </Route>
           <Route path="/" element={<MainLayout  />} />

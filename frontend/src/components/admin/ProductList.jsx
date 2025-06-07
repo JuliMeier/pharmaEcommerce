@@ -11,6 +11,7 @@ export const ProductList = ({ products,  onDelete, onEdit}) => {
                         <th>Descripción</th>
                         <th>Precio</th>
                         <th>Categoría</th>
+                        <th>Stock</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
@@ -29,9 +30,14 @@ export const ProductList = ({ products,  onDelete, onEdit}) => {
                             <td>{product.description}</td>
                             <td>${product.price}</td>
                             <td>{product.categoryId} </td>
+                            <td>{product.stock}</td>
                             <td>
                                 <button className="btn btn-primary me-2" onClick={()=> onEdit(product)} >Editar</button>
-                                <button className="btn btn-danger" onClick={() => onDelete(product.id)}>Eliminar</button>
+                                <button className="btn btn-danger" onClick={() => {
+                                    if (window.confirm("¿Estás seguro de eliminar este producto?")) {
+                                        onDelete(product.id);
+                                    }
+                                }}>Eliminar</button>
                             </td>
                         </tr>
                     ))}

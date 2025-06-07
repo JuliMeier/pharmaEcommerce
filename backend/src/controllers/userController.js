@@ -57,6 +57,17 @@ export const updateUser = async (req, res) => {
 }
 
 export const deleteUser = async (req, res) => {
-    const user = await User.destroy(req.params.id)
-    res.json({ message: 'Usuario eliminado' })
+  try {
+    const deleted = await User.destroy({where : {id: req.params.id}})
+    
+    if(deleted) {
+      res.json({message: 'Usuario eliminado'})
+    } else {
+      res.status(404).json({error: 'Usuario no encontrado'})
+    }
+  } catch (error) {
+    res.status(500).json({error: 'Error al eliminar usuario'})
+  }
+    
+    
 }
