@@ -21,6 +21,8 @@ const Checkout = () => {
   );
 
   const handleConfirm = async () => {
+
+    const token = localStorage.getItem('token')
     
     const orderPayload = {
       userId: user.id,
@@ -37,6 +39,7 @@ const Checkout = () => {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
       },
       body: JSON.stringify(orderPayload)
     });
@@ -69,7 +72,11 @@ const Checkout = () => {
       ) : (
         <>
           <div className="d-flex justify-content-end gap-2 mb-3">
-            <button className="btn btn-outline-danger" onClick={clearCart}>
+            <button className="btn btn-outline-danger" onClick={() => {
+              if (window.confirm("¿Estás seguro de vaciar el carrito?")) {
+                clearCart();
+              }
+            }}>
               Vaciar carrito
             </button>
 
@@ -78,9 +85,9 @@ const Checkout = () => {
             </Link>
           </div>
           <ul className="list-group">
-            {cartItems.map((item) => (
+            {cartItems.map((item, idx) => (
               <li
-                key={item.id}
+                key={item.id + '-' + idx}
                 className="list-group-item d-flex justify-content-between align-items-center"
               >
                 <div className="d-flex align-items-center">
@@ -104,7 +111,11 @@ const Checkout = () => {
                   <span className="me-3">${item.price * item.quantity}</span>
                   <button
                     className="btn btn-danger btn-sm"
-                    onClick={() => removeFromCart(item.title)}
+                    onClick={() => {
+                      if (window.confirm("¿Estás seguro de eliminar este producto del carrito?")) {
+                        removeFromCart(item.title);
+                      }
+                    }}
                   >
                     Eliminar
                   </button>

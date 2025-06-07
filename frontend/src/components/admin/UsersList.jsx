@@ -27,7 +27,11 @@ export const UsersList = ({ users, onEdit, onDelete }) => {
                 </button>
                 <button
                   className="btn btn-danger"
-                  onClick={() => onDelete(user.id)}
+                  onClick={() => {
+                    if (window.confirm("¿Estás seguro de eliminar este usuario?")) {
+                      onDelete(user.id);
+                    }
+                  }}
                 >
                   Eliminar
                 </button>

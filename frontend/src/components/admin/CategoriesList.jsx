@@ -22,7 +22,11 @@ export const CategoriesList = ({ categories, onDelete, onEdit}) => {
                 </button>
                 <button
                   className="btn btn-danger"
-                  onClick={() => onDelete(category.id)}
+                  onClick={() => {
+                    if (window.confirm("¿Estás seguro de eliminar esta categoría?")) {
+                      onDelete(category.id);
+                    }
+                  }}
                 >
                   Eliminar
                 </button>

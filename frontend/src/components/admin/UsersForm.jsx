@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
     email: "",
     password: "",
     confirmPassword: "",
-    role: "client", 
+    roleId: 1, 
   };
 
 export const UsersForm = ({onSave, message, error, user, onCancel}) => {
@@ -30,6 +30,7 @@ export const UsersForm = ({onSave, message, error, user, onCancel}) => {
             ...form,
             [e.target.name]: e.target.value,
         });
+       
     };
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -85,13 +86,13 @@ export const UsersForm = ({onSave, message, error, user, onCancel}) => {
             placeholder="Confirmar contraseña"
             /> 
             <select
-            name="role"
-            value={form.role}
+            name="roleId"
+            value={form.roleId}
             onChange={handleChange}
             className="form-control mb-2"
             >
-            <option value="client">Cliente</option>
-            <option value="admin">Administrador</option>
+            <option value={1}>Cliente</option>
+            <option value={2} >Administrador</option>
             </select>
             <button type='submit' className="btn btn-success me-2">
             {user ? 'Actualizar Usuario' : 'Crear Usuario'}

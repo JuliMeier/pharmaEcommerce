@@ -61,6 +61,7 @@ const Products = ({
               price={product.price}
               imgUrl={product.imgUrl}
               stock={product.stock}
+              description={product.description}
               favorite={product.favorite}
               onAddProduct={()=> addToCart(product)}
               onImageClick={() => handleImageClick(product)}
@@ -81,7 +82,8 @@ const Products = ({
               alt={selectedProduct.title}
               className="img-fluid"
             />
-            <p>Precio: ${selectedProduct.price} </p>
+            <p><strong>Precio: </strong> ${selectedProduct.price} </p>
+            <p><strong>Descripción: </strong> {selectedProduct.description}</p>
           </Modal.Body>
           <Modal.Footer>
             {selectedProduct.stock > 0 ? (

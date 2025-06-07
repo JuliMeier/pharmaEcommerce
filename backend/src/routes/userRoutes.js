@@ -1,12 +1,15 @@
 import { Router } from 'express'
 import { getUsers, getUserById, createUser, updateUser, deleteUser } from '../controllers/userController.js'
+import { authenticate } from '../middleware/authenticate.js'
+import { authorizeAdmin } from '../middleware/authorizeAdmin.js'
+import { authorizeSuperAdmin } from '../middleware/authorizeSuperAdmin.js'
 
 const router = Router()
 
-router.get('/', getUsers)
-router.get('/:id', getUserById)
-router.post('/', createUser)
-router.put('/:id', updateUser)
-router.delete('/:id', deleteUser)
+router.get('/', authenticate, authorizeAdmin, getUsers)
+router.get('/:id', authenticate, authorizeAdmin, getUserById)
+router.post('/', authenticate, authorizeSuperAdmin, createUser)
+router.put('/:id', authenticate, authorizeSuperAdmin, updateUser)
+router.delete('/:id', authenticate, authorizeSuperAdmin, deleteUser)
 
 export default router

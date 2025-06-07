@@ -1,5 +1,4 @@
 import dotenv from 'dotenv';
-dotenv.config()
 import express from 'express' 
 import cors from 'cors'
 import colors from 'colors'
@@ -12,6 +11,8 @@ import orderRouter from './routes/orderRoutes.js'
 import authRouter from './routes/authRouter.js'
 import categoryRouter from './routes/categoryRouter.js'
 
+
+dotenv.config()
 
 const app = express()
 

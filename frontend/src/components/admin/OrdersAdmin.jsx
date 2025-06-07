@@ -8,8 +8,16 @@ export const OrdersAdmin = () => {
     const [error, setError] = useState(null);
     const [showToast, setShowToast] = useState(false);
 
+    const token = localStorage.getItem('token')
+
+   
+
     useEffect(() => {
-        fetch('http://localhost:4000/api/orders')
+        fetch('http://localhost:4000/api/orders', {
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        })
         .then(res => res.json())
         .then(data => setOrders(data))
     }, []); 
@@ -20,6 +28,10 @@ export const OrdersAdmin = () => {
         try {
             const response = await fetch(`http://localhost:4000/api/orders/${id}`, {
                 method: 'DELETE',
+                headers: {
+              "Content-Type": "application/json",
+              "Authorization": `Bearer ${token}`,
+            },
             });
             const data = await response.json();
             if (response.ok) {
@@ -45,6 +57,7 @@ export const OrdersAdmin = () => {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
+                    "Authorization": `Bearer ${token}`,
                 },
                 body: JSON.stringify({ statusId }),
             });
