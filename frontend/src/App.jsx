@@ -7,6 +7,7 @@ import RegisterPage from "./components/auth/RegisterPage";
 import MainLayout from "./components/mainLayout/MainLayout";
 import ShopLayout from "./components/shopLayout/ShopLayout";
 import Checkout from "./components/checkout/Checkout";
+import OrderHistory from "./components/orderHistory/OrderHistory";
 import NotFound from "./pages/notFound/NotFound";
 import Protected from "./routes/Protected";
 import { AdminView } from './pages/AdminView'
@@ -46,14 +47,26 @@ function App() {
       <AuthProvider>
       <BrowserRouter>
         <Routes>
+
           <Route element={<ShopLayout />}>
             <Route path="/auth/login" element={<LoginPage />} />
             <Route path="/auth/register" element={<RegisterPage />} />
+            
             <Route path="/checkout" 
             element={ 
             <Protected allowedRoles={['client']}>
               <Checkout />
             </Protected> } />
+
+            <Route 
+              path="/history" 
+              element={ 
+                <Protected allowedRoles={['client']}>
+                  <OrderHistory />
+                </Protected> 
+              } 
+            />
+
             <Route
             path="/admin"
             element={
@@ -61,6 +74,7 @@ function App() {
                 <AdminView />
               </Protected>
             } />
+
             <Route path="*" element={<NotFound />} />
           </Route>
           <Route path="/" element={<MainLayout  />} />
