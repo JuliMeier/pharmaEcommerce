@@ -66,7 +66,6 @@ function App() {
                 </Protected> 
               } 
             />
-
             <Route
             path="/admin"
             element={

@@ -7,7 +7,7 @@ const router = Router()
 
 
 router.get('/', authenticate, authorizeAdmin, getOrders)
-router.get('/:id', authenticate, authorizeAdmin getOrderById)
+router.get('/:id', authenticate, authorizeAdmin, getOrderById)
 router.post('/', authenticate, createOrder)
 router.delete('/:id', authenticate, authorizeAdmin, deleteOrder)
 router.put('/:id', authenticate, authorizeAdmin, updateOrderStatus)

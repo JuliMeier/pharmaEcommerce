@@ -1,7 +1,8 @@
 .count-products {
     position: absolute;
-    top: 58%; 
-    right: 61%;
+    top: 28px; 
+    right: 62px;
+    transform: translate(60%, -40%);
     background-color: rgb(108, 117, 125);
     border-radius: 50%;
     width: 16px;
@@ -11,9 +12,6 @@
     align-items: center;
     color: #fff;
     
-}
-.cart-icon {
-    position: relative;
 }
 .counter-products-num {
     font-size: 10px;
