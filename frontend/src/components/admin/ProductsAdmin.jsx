@@ -126,6 +126,9 @@ export const ProductsAdmin = () => {
         onCancel={handleCancelEditProduct}
         message={message}
         error={error}
+        setShowToast={setShowToast}
+        setError={setError}
+        setMessage={setMessage}
       />
       <ProductList
         products={products}

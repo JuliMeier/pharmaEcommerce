@@ -1,12 +1,14 @@
 import { useState, useEffect} from 'react';
 import { UsersList } from './UsersList';
 import { UsersForm } from './UsersForm';
+import { Toast, ToastContainer } from "react-bootstrap";
 
 export const UsersAdmin = () => {
     const [users, setUsers] = useState([]);
     const [editingUser, setEditingUser] = useState(null);
     const [message, setMessage] = useState(null);
     const [error, setError] = useState(null);
+    const [showToast, setShowToast] = useState(false);
 
     const token = localStorage.getItem('token')
 
@@ -40,8 +42,10 @@ export const UsersAdmin = () => {
                 if (response.ok) {
                     setUsers(prev => prev.map(user => user.id === data.user.id ? data.user : user));
                     setMessage(data.message || "Usuario actualizado correctamente");
+                    setShowToast(true)
                 } else {
                     setError(data.error || "Error al actualizar el usuario");
+                    setShowToast(true)
                 }
             } else {
                 response = await fetch("http://localhost:4000/api/users", {
@@ -56,12 +60,15 @@ export const UsersAdmin = () => {
                 if (response.ok) {
                     setUsers(prev => [...prev, data.user]);
                     setMessage(data.message || "Usuario creado correctamente");
+                    setShowToast(true)
                 } else {
                     setError(data.error || "Error al crear el usuario");
+                    setShowToast(true)
                 }
             }
         } catch (error) {
             setError("Error de conexión al servidor");
+            setShowToast(true)
         }
         setEditingUser(null);
     }
@@ -81,11 +88,14 @@ export const UsersAdmin = () => {
             if (response.ok) {
                 setUsers(prev => prev.filter(user => user.id !== id));
                 setMessage(data.message || "Usuario eliminado correctamente");
+                setShowToast(true)
             } else {
                 setError(data.error || "Error al eliminar el usuario");
+                setShowToast(true)
             }
         } catch (error) {
             setError("Error de conexión al servidor");
+            setShowToast(true)
         }
     }
 
@@ -112,12 +122,34 @@ export const UsersAdmin = () => {
         error={error}
         user={editingUser}
         onCancel={handleCancelEdit}
+        setMessage={setMessage}
+        setError={setError}
+        setShowToast={setShowToast}
         />
         <UsersList 
         users={users}
         onEdit={handleEditUser}
         onDelete={handleDeleteUser}
         />
+          <ToastContainer position="top-end" className="p-3">
+        <Toast
+          onClose={() => {
+         setShowToast(false);
+         setMessage(null);
+         setError(null);
+          }} 
+          show={showToast}
+          style={{ position: "fixed", top: 20, right: 20, zIndex: 9999 }}
+          bg={error ? "danger" : "success"}
+          delay={2500}
+          autohide
+          
+        >
+          <Toast.Body className="text-white">
+            {error ? error : message}
+          </Toast.Body>
+        </Toast>
+      </ToastContainer>
         </>
     )
 }
