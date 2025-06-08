@@ -10,6 +10,7 @@ import CartOffCanvas from "../cartOffCanvas/CartOffCanvas";
 import { useCart } from "../../context/CartContext";
 import { useAuth } from "../../context/AuthContext";
 import { useNavigate, Link } from "react-router";
+import ToggleTheme from "../toggle/ToggleTheme";
 
 const Header = () => {
   const { user, logout } = useAuth();
@@ -66,15 +67,15 @@ const Header = () => {
                 Admin
               </Nav.Link>
             )}
-            {( !user || user.role === "client") && ( 
-            <Nav.Link onClick={handleCartShow} className="cart-link position-relative ">
-              {" "}
-              <FaCartPlus /> Carrito
-               <CountProductsItems countProducts={countProductsCart} />
-            </Nav.Link>
+            {(!user || user.role === "client") && (
+              <Nav.Link onClick={handleCartShow} className="cart-link position-relative ">
+                {" "}
+                <FaCartPlus /> Carrito
+                <CountProductsItems countProducts={countProductsCart} />
+              </Nav.Link>
             )}
 
-           
+
             {user && user.role === "client" && (
               <>
                 <Nav.Link as={Link} to="/history">
@@ -94,6 +95,7 @@ const Header = () => {
             )}
           </Nav>
         </Container>
+        <ToggleTheme />
       </Navbar>
       <CartOffCanvas
         onRemoveProduct={removeFromCart}

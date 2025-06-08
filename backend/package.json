@@ -1,7 +1,7 @@
 {
   "name": "pharmashopping_backend",
   "version": "1.0.0",
-  "description": "Proyecto e-commerce para TUP con React Express",
+  "description": "Proyecto e-commerce con React Express, Programación III, TUP, UTN",
   "main": "index.js",
   "type": "module",
   "scripts": {
@@ -10,7 +10,7 @@
     "build": "echo 'No build step needed for JavaScript'",
     "start": "node ./src/index.js"
   },
-  "author": "Julián Meier",
+  "author": "Julián Meier y Evelyn Roscher",
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^3.0.2",
