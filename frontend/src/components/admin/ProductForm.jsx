@@ -84,7 +84,7 @@ export const ProductForm = ({ onSave, message, error, product, onCancel, setErro
         <h6>Formulario de carga de productos</h6>
 
         <form onSubmit={handleSubmit} className="mb-6">
-          <label className="my-2 "> Nombre del producto <span className="text-danger fw-bold">*</span></label>
+          <label className="my-2 "><i>Nombre del producto </i><span className="text-danger fw-bold">*</span></label>
           <input
             name="title"
             type="text"
@@ -94,7 +94,7 @@ export const ProductForm = ({ onSave, message, error, product, onCancel, setErro
             required
             className="form-control mb-2"
           />
-          <label className="my-2 "> Precio del producto <span className="text-danger fw-bold">*</span></label>
+          <label className="my-2 "><i>Precio del producto </i> <span className="text-danger fw-bold">*</span></label>
           <input
             name="price"
             type="number"
@@ -104,7 +104,7 @@ export const ProductForm = ({ onSave, message, error, product, onCancel, setErro
             required
             className="form-control mb-2"
           />
-          <label className="my-2 "> Stock del producto <span className="text-danger fw-bold">*</span></label>
+          <label className="my-2 "><i>Stock del producto </i><span className="text-danger fw-bold">*</span></label>
           <input
             name="stock"
             type="number"
@@ -125,9 +125,9 @@ export const ProductForm = ({ onSave, message, error, product, onCancel, setErro
             className="form-check-input mb-2 me-2"
           />
           <label className="form-check-label mb-2 ">
-            Disponible  
+            <i>Disponible</i>  
           </label>
-          <label className="my-2 d-block "> URL de la imagen<span className="text-danger fw-bold">*</span></label>
+          <label className="my-2 d-block "><i>URL de la imagen</i> <span className="text-danger fw-bold">*</span></label>
           <input
             name="imgUrl"
             type="text"
@@ -137,7 +137,7 @@ export const ProductForm = ({ onSave, message, error, product, onCancel, setErro
             required
             className="form-control mb-2"
           />
-          <label className="my-2 "> ID de la categoría<span className="text-danger fw-bold">*</span></label>
+          <label className="my-2 "><i>ID de la categoría</i> <span className="text-danger fw-bold">*</span></label>
           <input
             name="categoryId"
             type="number"
@@ -147,7 +147,7 @@ export const ProductForm = ({ onSave, message, error, product, onCancel, setErro
             required
             className="form-control mb-2"
           />
-          <label className="my-2"> Descripción del producto<span className="text-danger fw-bold">*</span></label>
+          <label className="my-2"><i>Descripción del producto</i> <span className="text-danger fw-bold">*</span></label>
           <textarea
             name="description"
             type="text"
@@ -157,7 +157,7 @@ export const ProductForm = ({ onSave, message, error, product, onCancel, setErro
             required
             className="form-control mb-2"
           />
-          <button type="submit" className="btn btn-success me-2 mt-2">
+          <button type="submit" className="btn btn-success me-2 mt-2 mb-4">
             {product ? "Actualizar producto" : "Crear producto"}
           </button>
           {product && (

@@ -44,6 +44,7 @@ export const createOrder = async (req, res) => {
     const order = await Order.create({ userId, statusId, total });
     for (const item of items) {
       const product = await Product.findByPk(item.productId)
+      console.log(product)
 
       if(!product || product.stock < item.quantity){
         return res.status(400).json({error: `Stock insuficiente para el product: ${product ? product.title : item.productId}`})

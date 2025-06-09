@@ -89,7 +89,7 @@ export const UsersForm = ({
       <div className="container mt-4">
         <h6 className="mb-3">{user ? "Editar Usuario" : "Crear usuario"} </h6>
         <form onSubmit={handleSubmit} className="mb-3">
-          <label className="my-2"> Nombre de usuario <span className="text-danger fw-bold">*</span></label>
+          <label className="my-2"><i>Nombre de usuario </i> <span className="text-danger fw-bold">*</span></label>
           <input
             name="name"
             type="text"
@@ -99,7 +99,7 @@ export const UsersForm = ({
             onChange={handleChange}
             placeholder=""
           />
-          <label className="my-2"> Apellido de usuario <span className="text-danger fw-bold">*</span></label>
+          <label className="my-2"><i>Apellido de usuario</i> <span className="text-danger fw-bold">*</span></label>
           <input
             name="lastName"
             type="text"
@@ -108,7 +108,7 @@ export const UsersForm = ({
             className="form-control mb-2"
             placeholder=""
           />
-          <label className="my-2"> Correo electrónico <span className="text-danger fw-bold">*</span></label>
+          <label className="my-2"><i>Correo electrónico </i> <span className="text-danger fw-bold">*</span></label>
           <input
             name="email"
             type="email"
@@ -117,7 +117,7 @@ export const UsersForm = ({
             className="form-control mb-2"
             placeholder=""
           />
-          <label className="my-2"> Contraseña <span className="text-danger fw-bold">*</span></label>
+          <label className="my-2"><i>Contraseña </i> <span className="text-danger fw-bold">*</span></label>
           <input
             name="password"
             type="password"
@@ -126,7 +126,7 @@ export const UsersForm = ({
             className="form-control mb-2"
             placeholder=""
           />
-          <label className="my-2"> Confirmar contraseña <span className="text-danger fw-bold">*</span></label>
+          <label className="my-2"><i>Confirmar contraseña </i> <span className="text-danger fw-bold">*</span></label>
           <input
             name="confirmPassword"
             type="password"
@@ -135,7 +135,7 @@ export const UsersForm = ({
             className="form-control mb-2"
             placeholder=""
           />
-          <label className="my-2"> Rol de usuario <span className="text-danger fw-bold">*</span></label>
+          <label className="my-2"><i>Rol de usuario </i> <span className="text-danger fw-bold">*</span></label>
           <select
             name="roleId"
             value={form.roleId}
@@ -145,7 +145,7 @@ export const UsersForm = ({
             <option value={1}>Cliente</option>
             <option value={2}>Administrador</option>
           </select>
-          <button type="submit" className="btn btn-success me-2">
+          <button type="submit" className="btn btn-success me-2 mt-2 mb-2">
             {user ? "Actualizar Usuario" : "Crear Usuario"}
           </button>
           {user && (

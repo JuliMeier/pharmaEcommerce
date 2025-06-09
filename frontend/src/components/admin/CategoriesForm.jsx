@@ -59,7 +59,7 @@ export const CategoriesForm = ({
         <h6>Formulario de carga de categorías</h6>
 
         <form onSubmit={handleSubmit} className="mb-3">
-          <label className="my-2"> Título de la categoría <span className="text-danger fw-bold">*</span></label>
+          <label className="my-2"><i>Título de la categoría </i> <span className="text-danger fw-bold">*</span></label>
           <input
             name="title"
             type="text"
@@ -68,7 +68,7 @@ export const CategoriesForm = ({
             className="form-control mb-2"
             placeholder=""
           />
-          <button type="submit" className="btn btn-success mb-2">
+          <button type="submit" className="btn btn-success mb-2 mt-2">
             {category ? "Actualizar Categoría" : "Crear Categoría"}
           </button>
             {category && (
