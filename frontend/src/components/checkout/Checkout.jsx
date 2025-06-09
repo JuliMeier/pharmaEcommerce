@@ -94,7 +94,7 @@ const Checkout = () => {
                   <span>{item.title} x </span>
                   <button
                     className="btn btn-sm btn-outline-secondary ms-2"
-                    onClick={() => decrementQuantity(item.title)}
+                    onClick={() => decrementQuantity(item.id)}
                     disabled={item.quantity <= 1}
                   >
                     -
@@ -102,7 +102,7 @@ const Checkout = () => {
                   <span className="mx-2">{item.quantity}</span>
                   <button
                     className="btn btn-sm btn-outline-secondary"
-                    onClick={() => incrementQuantity(item.title)}
+                    onClick={() => incrementQuantity(item.id)}
                   >
                     +
                   </button>
@@ -113,7 +113,7 @@ const Checkout = () => {
                     className="btn btn-danger btn-sm"
                     onClick={() => {
                       if (window.confirm("¿Estás seguro de eliminar este producto del carrito?")) {
-                        removeFromCart(item.title);
+                        removeFromCart(item.id);
                       }
                     }}
                   >

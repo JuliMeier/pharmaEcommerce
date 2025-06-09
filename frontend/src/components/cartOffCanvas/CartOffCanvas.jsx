@@ -37,19 +37,19 @@ const CartOffCanvas = ({ show, onHide}) => {
                 <div>
                   <button 
                   className="btn btn-outline-secondary btn-sm me-2"
-                  onClick={()=> decrementQuantity(item.title)}
+                  onClick={()=> decrementQuantity(item.id)}
                   >-</button>
                 <strong>{item.quantity}</strong>
                 <button 
                 className="btn btn-outline-secondary btn-sm ms-2 me-2"
-                onClick={()=> incrementQuantity(item.title)}
+                onClick={()=> incrementQuantity(item.id)}
                 >+</button>
                 {item.title} -
                 <div className="d-flex justify-content-center"><strong>${item.price}</strong></div>                
                 </div>                
                 <button
                   className="btn btn-danger btn-md"
-                  onClick={() => removeFromCart(item.title) }
+                  onClick={() => removeFromCart(item.id) }
                 >
                   <MdDeleteForever />
                 </button>
