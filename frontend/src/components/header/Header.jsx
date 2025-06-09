@@ -84,6 +84,13 @@ const Header = () => {
                 </Nav.Link>
               </>
             )}
+
+            {user && (
+              <Nav.Link as={Link} to="/profile">
+                Mi perfil
+              </Nav.Link>
+            )}
+          
             {user ? (
               <Nav.Link onClick={logout}>
                 <CiLogout /> Cerrar
