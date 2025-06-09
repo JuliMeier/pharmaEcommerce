@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 
 
+
 const initialState = {
   title: "",
   price: "",
@@ -11,12 +12,14 @@ const initialState = {
   available: true,
 };
 
-export const ProductForm = ({ onSave, message, error, product, onCancel }) => {
+export const ProductForm = ({ onSave, message, error, product, onCancel, setError, setMessage, setShowToast }) => {
   const [form, setForm] = useState(initialState);
+
 
 
   useEffect(() => {
     if (product) {
+
       setForm({
         id: product.id,
         title: product.title,
@@ -42,9 +45,37 @@ export const ProductForm = ({ onSave, message, error, product, onCancel }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    if(form.price <= 0 ) {
+      setError('El precio debe ser mayor a 0')
+      setShowToast(true)
+      return
+    }
+    if (form.stock < 0) {
+      setError("El stock no puede ser negativo");
+      setShowToast(true);
+      return;
+    }
+      if (!/^https?:\/\/.+\..+/.test(form.imgUrl)) {
+      setError("La URL de la imagen no es válida");
+      setShowToast(true);
+      return;
+    }
+
+        if (!form.description.trim()) {
+      setError("La descripción no puede estar vacía");
+      setShowToast(true);
+      return;
+    }
+    if (!form.categoryId || form.categoryId <= 0) {
+      setError("El ID de la categoría debe ser un número positivo");
+      setShowToast(true);
+      return;
+    }
+
     await onSave(form);
 
     setForm(initialState);
+
   };
 
   return (
@@ -52,34 +83,38 @@ export const ProductForm = ({ onSave, message, error, product, onCancel }) => {
       <div className="container mt-4">
         <h6>Formulario de carga de productos</h6>
 
-        <form onSubmit={handleSubmit} className="mb-3">
+        <form onSubmit={handleSubmit} className="mb-6">
+          <label className="my-2 "> Nombre del producto <span className="text-danger fw-bold">*</span></label>
           <input
             name="title"
             type="text"
             value={form.title}
             onChange={handleChange}
-            placeholder="Nombre del producto"
+            placeholder=""
             required
             className="form-control mb-2"
           />
+          <label className="my-2 "> Precio del producto <span className="text-danger fw-bold">*</span></label>
           <input
             name="price"
             type="number"
             value={form.price}
             onChange={handleChange}
-            placeholder="Precio del producto"
+            placeholder=""
             required
             className="form-control mb-2"
           />
+          <label className="my-2 "> Stock del producto <span className="text-danger fw-bold">*</span></label>
           <input
             name="stock"
             type="number"
             value={form.stock}
             onChange={handleChange}
-            placeholder="stock del producto"
+            placeholder=""
             required
             className="form-control mb-2"
           />
+          
           <input
             name="available"
             type="checkbox"
@@ -92,34 +127,37 @@ export const ProductForm = ({ onSave, message, error, product, onCancel }) => {
           <label className="form-check-label mb-2 ">
             Disponible  
           </label>
+          <label className="my-2 d-block "> URL de la imagen<span className="text-danger fw-bold">*</span></label>
           <input
             name="imgUrl"
             type="text"
             value={form.imgUrl}
             onChange={handleChange}
-            placeholder="URL de la imagen"
+            placeholder=""
             required
             className="form-control mb-2"
           />
+          <label className="my-2 "> ID de la categoría<span className="text-danger fw-bold">*</span></label>
           <input
             name="categoryId"
             type="number"
             value={form.categoryId}
             onChange={handleChange}
-            placeholder="ID de la categoría"
+            placeholder=""
             required
             className="form-control mb-2"
           />
+          <label className="my-2"> Descripción del producto<span className="text-danger fw-bold">*</span></label>
           <textarea
             name="description"
             type="text"
             value={form.description}
             onChange={handleChange}
-            placeholder="Descripción del producto"
+            placeholder=""
             required
             className="form-control mb-2"
           />
-          <button type="submit" className="btn btn-success me-2">
+          <button type="submit" className="btn btn-success me-2 mt-2">
             {product ? "Actualizar producto" : "Crear producto"}
           </button>
           {product && (

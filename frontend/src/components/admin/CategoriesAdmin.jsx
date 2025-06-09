@@ -125,6 +125,7 @@ export const CategoriesAdmin = () => {
                 onCancel={handleCancelEdit} 
                 setMessage={setMessage}
                 setError={setError}  
+                setShowToast={setShowToast}
             />
             <CategoriesList 
             categories={categories} 

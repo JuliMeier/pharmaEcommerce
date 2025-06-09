@@ -3,6 +3,7 @@ import Header from "../header/Header"
 import Products from "../products/Products"
 import SearchProducts from "../searchProducts/SearchProducts"
 import { useCart } from "../../context/CartContext";
+import { Footer  } from "../footer/Footer";
 
 const MainLayout = ({ isLoggedIn, setIsLoggedIn }) => {
 
@@ -39,7 +40,7 @@ const MainLayout = ({ isLoggedIn, setIsLoggedIn }) => {
         />
         <SearchProducts onCategorySelect={handleCategorySelect} onSearch={handleProductSearch} />
         <Products searchProduct={searchProduct} selectedCategory={selectedCategory} onAddProduct={addtoCart}  />
-
+        <Footer />
     </>
   )
 }

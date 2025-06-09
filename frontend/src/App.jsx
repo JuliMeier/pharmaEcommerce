@@ -10,6 +10,7 @@ import Checkout from "./components/checkout/Checkout";
 import OrderHistory from "./components/orderHistory/OrderHistory";
 import NotFound from "./pages/notFound/NotFound";
 import Protected from "./routes/Protected";
+import ProfilePage from "./components/profile/Profile";
 import { AdminView } from './pages/AdminView'
 import { useState } from "react";
 
@@ -45,41 +46,51 @@ function App() {
   return (
     <>
       <AuthProvider>
-      <BrowserRouter>
-        <Routes>
+        <BrowserRouter>
+          <Routes>
 
-          <Route element={<ShopLayout />}>
-            <Route path="/auth/login" element={<LoginPage />} />
-            <Route path="/auth/register" element={<RegisterPage />} />
-            
-            <Route path="/checkout" 
-            element={ 
-            <Protected allowedRoles={['client']}>
-              <Checkout />
-            </Protected> } />
+            <Route element={<ShopLayout />}>
+              <Route path="/auth/login" element={<LoginPage />} />
+              <Route path="/auth/register" element={<RegisterPage />} />
 
-            <Route 
-              path="/history" 
-              element={ 
-                <Protected allowedRoles={['client']}>
-                  <OrderHistory />
-                </Protected> 
-              } 
-            />
-            <Route
-            path="/admin"
-            element={
-              <Protected  allowedRoles={['admin', 'superadmin']}>
-                <AdminView />
-              </Protected>
-            } />
+              <Route path="/checkout"
+                element={
+                  <Protected allowedRoles={['client']}>
+                    <Checkout />
+                  </Protected>} />
 
-            <Route path="*" element={<NotFound />} />
-          </Route>
-          <Route path="/" element={<MainLayout  />} />
+              <Route
+                path="/history"
+                element={
+                  <Protected allowedRoles={['client']}>
+                    <OrderHistory />
+                  </Protected>
+                }
+              />
 
-        </Routes>
-      </BrowserRouter>
+              <Route
+                path="/profile"
+                element={
+                  <Protected>
+                    <ProfilePage />
+                  </Protected>
+                }
+              />
+
+              <Route
+                path="/admin"
+                element={
+                  <Protected allowedRoles={['admin', 'superadmin']}>
+                    <AdminView />
+                  </Protected>
+                } />
+
+              <Route path="*" element={<NotFound />} />
+            </Route>
+            <Route path="/" element={<MainLayout />} />
+
+          </Routes>
+        </BrowserRouter>
       </AuthProvider>
     </>
   );

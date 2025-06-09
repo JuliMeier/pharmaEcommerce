@@ -12,6 +12,7 @@ export const CategoriesForm = ({
   onCancel,
   setMessage,
   setError,
+  setShowToast
 }) => {
   const [form, setForm] = useState(initialState);
 
@@ -41,6 +42,11 @@ export const CategoriesForm = ({
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+      if (!/^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+$/.test(form.title.trim())) {
+    if (setError) setError("El nombre de la categoría no es válido");
+    setShowToast(true)
+    return;
+  }
 
     await onSave(form);
 
@@ -53,13 +59,14 @@ export const CategoriesForm = ({
         <h6>Formulario de carga de categorías</h6>
 
         <form onSubmit={handleSubmit} className="mb-3">
+          <label className="my-2"> Título de la categoría <span className="text-danger fw-bold">*</span></label>
           <input
             name="title"
             type="text"
             value={form.title}
             onChange={handleChange}
             className="form-control mb-2"
-            placeholder="Título de la categoría"
+            placeholder=""
           />
           <button type="submit" className="btn btn-success mb-2">
             {category ? "Actualizar Categoría" : "Crear Categoría"}
