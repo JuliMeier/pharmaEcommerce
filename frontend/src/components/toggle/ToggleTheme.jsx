@@ -8,9 +8,11 @@ const ToggleTheme = () => {
     const { theme, toggleTheme } = useContext(ThemeContext);
 
     return (
-        <Button onClick={toggleTheme} className="me-3 my-3">
-            {theme === THEMES.LIGHT ? "🌙 Modo oscuro" : "☀️ Modo claro"}
+        <Button
+            onClick={toggleTheme} className="me-3 my-3" variant={theme === THEMES.LIGHT ? "outline-dark" : "outline-light"}>
+            {theme === THEMES.LIGHT ? "🌙" : "☀️"}
         </Button>
+
     )
 }
 
