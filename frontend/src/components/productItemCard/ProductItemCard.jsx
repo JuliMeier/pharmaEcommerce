@@ -4,6 +4,7 @@ import { Card, Button, Toast, ToastContainer } from "react-bootstrap";
 import { FaHeart, FaRegHeart} from "react-icons/fa"
 
 const ProductItemCard = ({
+  id,
   title,
   price,
   imgUrl,
@@ -19,7 +20,7 @@ const ProductItemCard = ({
   
 
   const handleButtonClick = () => {
-    const product = { title, price, imgUrl, stock}
+    const product = { id, title, price, imgUrl, stock}
     setShowToast(true);
     addToCart(product)
     

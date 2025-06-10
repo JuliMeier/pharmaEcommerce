@@ -57,6 +57,7 @@ const Products = ({
         {filteredProducts.map((product) => (
           <div key={product.id} className="col-md-4">
             <ProductItemCard
+              id={product.id}
               title={product.title}
               price={product.price}
               imgUrl={product.imgUrl}

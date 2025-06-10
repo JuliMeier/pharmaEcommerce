@@ -163,7 +163,7 @@ export const ProductForm = ({ onSave, message, error, product, onCancel, setErro
           {product && (
             <button
               type="button"
-              className="btn btn-secondary"
+              className="btn btn-secondary mt-2 mb-4"
               onClick={onCancel}
             >
               Cancelar

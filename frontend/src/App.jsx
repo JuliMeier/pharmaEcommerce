@@ -14,34 +14,11 @@ import ProfilePage from "./components/profile/Profile";
 import { AdminView } from './pages/AdminView'
 import { useState } from "react";
 
-// function getUserRole() {
-//   const user = localStorage.getItem('user');
-//   return user ? JSON.parse(user).role : null;
-// }
 
-// function getUser() {
-//   const user = localStorage.getItem('user');
-//   return user ? JSON.parse(user) : null;
-// }
+
 
 function App() {
-  // const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem('token'));
-  // const [userRole, setUserRole] = useState(getUserRole());
-  // const [user, setUser] = useState(getUser());
-  // console.log(user)
 
-  // const handleLogin = (userData) => {
-  //   setIsLoggedIn(true);
-  //   setUserRole(userData.role);
-  //   localStorage.setItem('user', JSON.stringify(userData));
-  // };
-
-  // const handleLogout = () => {
-  //   setIsLoggedIn(false);
-  //   setUserRole(null);
-  //   localStorage.removeItem('user');
-  //   localStorage.removeItem('token');
-  // }
 
   return (
     <>
